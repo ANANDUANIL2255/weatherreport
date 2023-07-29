@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+</head>
+<body   style="background-image: url(./img/clouds-lightning-nature-rain-wallpaper-preview.jpg); background-repeat: no-repeat;background-size: cover;;margin: 0;background-attachment: fixed;"><br>
+    <h1 class="text-center" style="color: rgb(20, 220, 33);">CHECK WEATHER REPORT</h1>
+    <div class=" container w-100  col-lg-4 " style="border-radius: 20px; background-color: rgba(255, 255, 255, 0.24); margin-top: 30px; height: 430px;" ><br>
+    <!-- <h1 class="text-center">CHECK WEATHER REPORT</h1> -->
+            <input class="form-control w-100 col-lg-4 " id="example"  type="text" placeholder="Enter a city name" >
+            <div class="text-center"> 
+                <button onclick="weatherData()" type="button" class="btn btn-danger  mt-4 ">SEARCH</button></div>
+        <!-- <input class="form-control w-75 ms-5" type="text" placeholder="search"> -->
+        <!-- <h3 style="text-align: center;">LOCATION</h3>
+        <p style="text-align: center;"><i class="fa-regular fa-calendar"></i>DATE</p>
+        <P style="text-align: center;">RAIN</P> -->
+        <!-- <i style="margin-left: 600px;" class="fa-solid fa-5x fa-cloud-bolt"></i> -->
+        <!-- <h1 style="text-align: center;font-size: 60px;" id="result"><i class="fa-solid fa-2x fa-cloud-bolt" style="color: black;"></i>degree</h1> -->
+        <div class="weather">
+            <img src="./img/88a7c0a7-e04c-4786-811e-9718c6ad02be-removebg-preview.png" class="" style="width: 90px;margin-top: 10px;margin-left: 47%;">
+           </div>
+       
+        <div class="container w-25  col-lg-4 " id="result" style="color:white" >
+            
+                </div>
+    </div>
+    <!-- <img src="./img/88a7c0a7-e04c-4786-811e-9718c6ad02be-removebg-preview.png" alt=""> -->
+</body>
+<script>
+    function weatherData(){
+        weatherRep=example.value
+        // appikey="b41ec3be35c7dac8aabbc21ba253137a"
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${weatherRep}&appid=b41ec3be35c7dac8aabbc21ba253137a&units=metric`).then(data=>data.json()).then(cData=>displayData(cData))
+
+    function displayData(dataArray){
+           place=dataArray.name
+           temp=dataArray.main.temp
+           humidity=dataArray.main.humidity
+           windSpeed=dataArray.wind.speed
+           mai=dataArray.weather[0].main
+           desc=dataArray.weather[0].description
+            // Tempe=Math.floor((Temp - 273.15))
+           
+            result.innerHTML=
+//             `<div class="card" style="width: 18rem;">
+//   <div class="card-body">
+    // <i class="fa-solid fa-temperature-three-quarters" style="color:red; "></i>
+    
+    // <h5 class="card-title"  style="text-align:center;">${desc}</h5>
+
+    `  <h5 class="card-title"  style="text-align:center;">${mai} </h5>   
+   
+    <h1 class="card-title " style="text-align: center; ">${place}</h1> <br>
+
+    <h5 class="card-title"  style="text-align: center; ">${temp}°C</h5><br>
+    <h5 class="card-title"  style="text-align:center;"><i class="fa-solid fa-water"  style="color:blue; "></i>  ${humidity}</h5><br>
+    <h5 class="card-title"  style="text-align:center;"><i class="fa-solid fa-wind"  style="color:blue; "></i> ${windSpeed}</h5><br>
+  
+    `
+    
+
+   
+    //<h5 class="card-title"  style="text-align:center;>${windSpeed}</h5>
+    // <p class="card-title"  style="text-align:center;">${mai}</p>
+    // <p class="card-title"  style="text-align:center;">${desc}</p>
+
+//   </div>
+ 
+  
+// </div>`
+    }
+    }
+</script>
+</html>
